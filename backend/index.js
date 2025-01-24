@@ -2,8 +2,11 @@ import 'dotenv/config';
 import express, { urlencoded } from 'express';
 import cors from 'cors';
 import authRoute from './routes/authRoute.js'
+import {connectDB} from './config/db.js'
+
+connectDB();
+
 const app=express();
-connectDb();
 
 app.use(cors({
     origin:'http://localhost:5173',
