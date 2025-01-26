@@ -11,12 +11,12 @@ export const loginUser = async (req, res) => {
     let user = await userModel.findOne({ email });
 
     if (!user)
-      return res.json({ success: false, message: "Invalid email " });
+      return res.json({ success: false, message: "Invalid email or password" });
 
     let checkPass = await user.comparePassword(password);
 
     if (!checkPass)
-      return res.json({ success: false, message: "Invalid  password" });
+      return res.json({ success: false, message: "Invalid email or  password" });
 
     let token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
