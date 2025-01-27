@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { addTask } from "../../services/actions/taskApi";
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
 const AddTask = ({ setOpen }) => {
   const {
@@ -13,11 +13,11 @@ const AddTask = ({ setOpen }) => {
 
 
   const {token}=useSelector(state=>state.auth);
-  console.log(token);
+  const {alltask}=useSelector(state=>state.task);
+  const dispatch=useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
-    addTask(data,token);
+    addTask(data,token,alltask,dispatch);
     reset();
     setOpen(false);
   };

@@ -17,7 +17,7 @@ export const addTask = async (req, res) => {
       dueDate: date,
     });
 
-    let user = await userModel.findByIdAndUpdate(
+      await userModel.findByIdAndUpdate(
       userId,
       { $push: { task: createTask._id } },
       { new: true }
@@ -37,8 +37,7 @@ export const getAllTask=async(req,res)=>{
 
        let tasks=await taskModel.find({});
 
-       console.log(tasks);
-       return res.json({success:true});
+       return res.json({success:true,task:tasks});
 
     }
     catch(er){
