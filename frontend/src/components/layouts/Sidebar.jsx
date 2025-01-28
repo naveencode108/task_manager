@@ -17,6 +17,39 @@ const Sidebar = () => {
 
   const dispatch=useDispatch();
   const navigate=useNavigate();
+
+  const sideBarData=[
+    {
+      title:'Dashboard',
+      path:'/user_dashboard',
+      icon:<FaTachometerAlt className="mr-3" />
+    },
+    {
+      title:'All Task',
+      path:'/all-task',
+      icon: <FaTasks className="mr-3" />
+    },
+    {
+      title:'Completed Task',
+      path:'/complete-task',
+      icon: <FaCheckCircle className="mr-3" />
+    },
+    {
+      title:'Pending Task',
+      path:'/pending-task',
+      icon:<FaHourglass className="mr-3" />
+    },
+    {
+      title:'Important Task',
+      path:'/important-task',
+      icon:<FaExclamationCircle className="mr-3" />
+    },
+    {
+      title:'InProgress Task',
+      path:'/in-progress-task',
+      icon:<FaTachometerAlt className="mr-3" />
+    }
+  ]
  
 
   return (
@@ -25,45 +58,16 @@ const Sidebar = () => {
         <h1 className="text-2xl font-bold mb-6 text-center text-black border-b-black border-b-[1px]">
           Actions
         </h1>
-        <Link
-          to="/user_dashboard"
-          className="flex items-center py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition ease-in"
-        >
-          <FaTachometerAlt className="mr-3" /> {/* Dashboard Icon */}
-          Dashboard
+         {sideBarData.map((item,index)=>(
+           <Link
+           key={index}
+           to={item.path}
+           className="flex items-center py-2 focus:bg-orange-500 focus:text-white px-4 rounded-md hover:bg-orange-500 hover:text-white transition ease-in"
+           >
+           {item.icon}
+           {item.title}
         </Link>
-
-        <Link
-          to="/all-task"
-          className="flex items-center py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition ease-in"
-        >
-          <FaTasks className="mr-3" /> {/* All Tasks Icon */}
-          All Tasks
-        </Link>
-
-        <Link
-          to="/complete-task"
-          className="flex items-center py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition ease-in"
-        >
-          <FaCheckCircle className="mr-3" /> {/* Complete Tasks Icon */}
-          Complete Tasks
-        </Link>
-
-        <Link
-          to="/pending-task"
-          className="flex items-center py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition ease-in"
-        >
-          <FaHourglass className="mr-3" /> {/* Pending Tasks Icon */}
-          Pending Tasks
-        </Link>
-
-        <Link
-          to="/important-task"
-          className="flex items-center py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition ease-in"
-        >
-          <FaExclamationCircle className="mr-3" /> {/* Important Tasks Icon */}
-          Important Tasks
-        </Link>
+        ))}
       </nav>
 
       <button onClick={()=>logoutUser(dispatch,navigate)} className="px-3 flex items-center justify-center py-2 bg-orange-500  transition-all ease-in rounded-full hover:text-white">

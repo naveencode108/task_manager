@@ -10,6 +10,7 @@ import PendingTask from "./components/layouts/Dashboard/PendingTask";
 import ImportantTask from "./components/layouts/Dashboard/ImportantTask";
 import ProtectedRoute from "./components/layouts/Auth/ProtectedRoute";
 import OpenRoute from "./components/layouts/Auth/OpenRoute";
+import InProgressTask from "./components/layouts/Dashboard/InProgressTask";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/complete-task" element={<CompletedTask />} />
             <Route path="/pending-task" element={<PendingTask />} />
             <Route path="/important-task" element={<ImportantTask />} />
+            <Route path="/in-progress-task" element={<InProgressTask />} />
           </Route>
         </Route>
 
