@@ -28,7 +28,7 @@ const Alltask = () => {
   }
 
   return (
-    <div className="p-1">
+    <div className="">
       <h1 className="text-3xl font-bold mb-6 text-center border-b-2">
         All Tasks
       </h1>
@@ -37,7 +37,7 @@ const Alltask = () => {
 
       {open && <EditTask setOpen={setOpen} data={task} />}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 overflow-y-auto">
         {alltask && alltask.length > 0 ? (
           alltask?.map((tasks, index) => (
            <Card key={index} task={tasks} token={token} dispatch={dispatch} alltask={alltask} setOpen={setOpen} setTask={setTask}/>

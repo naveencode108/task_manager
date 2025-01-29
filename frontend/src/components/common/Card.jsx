@@ -2,18 +2,26 @@ import React from "react";
 import { deleteTask, markImportantTask } from "../../services/actions/taskApi";
 import { FaExclamationCircle, FaRegEdit } from "react-icons/fa";
 import { MdOutlineDelete } from "react-icons/md";
+import Stack from '@mui/material/Stack';
+import { Gauge } from '@mui/x-charts/Gauge';
 
-const Card = ({task,token,dispatch,alltask,setOpen,setTask}) => {
+const Card = ({ task, token, dispatch, alltask, setOpen, setTask }) => {
   return (
-    <div
-      className="p-4 bg-white shadow-lg flex flex-col justify-between gap-4 rounded-lg border border-orange-300 hover:shadow-xl transition-shadow duration-300"
-    >
+    <div className="p-4 bg-white shadow-lg flex flex-col justify-between gap-4 rounded-lg border border-orange-300 hover:shadow-xl transition-shadow duration-300">
       {/* title and description */}
-      <div className="mb-2">
+      <div className="mb-2 flex justify-between items-center">
+        <div>
         <h2 className="text-xl capitalize font-semibold text-gray-800 mb-1">
           {task.title}
         </h2>
         <p className="text-gray-600 line-clamp-4">{task.description}</p>
+        </div>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={{ xs: 1, md: 3 }}
+        >
+          <Gauge width={80} height={80} value={task.status=='pending'?0:task.status=='in-progress'?50:100} />
+        </Stack>
       </div>
 
       <div className="flex justify-between items-center ">

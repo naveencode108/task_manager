@@ -34,7 +34,7 @@ const EditTask = ({ setOpen, data }) => {
 
 
   return (
-    <div className="fixed inset-0 backdrop-blur-sm bg-black/50 flex justify-center items-center">
+    <div className="fixed z-40 inset-0 backdrop-blur-sm bg-black/50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-md">
         <h1 className="text-2xl font-semibold mb-4 text-center">Edit Task</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

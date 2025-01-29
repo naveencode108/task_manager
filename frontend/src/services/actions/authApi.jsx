@@ -5,7 +5,6 @@ import { setToken, setUser } from "../../slices/auth";
 export const loginUser = async (data, dispatch, navigate) => {
   try {
     let res = await apiCall("POST", "/api/v1/auth/login", data);
-    console.log(res);
 
     if (res.data.success) {
       localStorage.setItem("token", JSON.stringify(res.data.token));
